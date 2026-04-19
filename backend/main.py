@@ -1,11 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from dotenv import load_dotenv
 from openai import OpenAI
-import torch
-import numpy as np
+import requests
 import os
 
 # =========================================
@@ -43,9 +41,9 @@ app.add_middleware(
 # Global Variables
 # =========================================
 MODEL_NAME = "YashKumar11/vitagita-model"
+API_URL = f"https://api-inference.huggingface.co/models/{MODEL_NAME}"
+HEADERS = {"Authorization": f"Bearer {HF_TOKEN}"}
 
-tokenizer = None
-model = None
 chat_history = []
 
 # =========================================
@@ -59,8 +57,6 @@ stats = {
     "Stress": 0
 }
 
-device = "cuda" if torch.cuda.is_available() else "cpu"
-
 # =========================================
 # Label Mapping
 # =========================================
@@ -73,27 +69,17 @@ id2label = {
 }
 
 # =========================================
-# Load Model (Startup)
+# Load Model (Wake-up call to Serverless API)
 # =========================================
 @app.on_event("startup")
 def load_model():
-    global tokenizer, model
-
-    print("Loading model...")
-
-    tokenizer = AutoTokenizer.from_pretrained(
-        MODEL_NAME,
-        token=HF_TOKEN
-    )
-
-    model = AutoModelForSequenceClassification.from_pretrained(
-        MODEL_NAME,
-        token=HF_TOKEN
-    ).to(device)
-
-    model.eval()
-
-    print("Model loaded successfully!")
+    print("Waking up Cloud Inference Server...")
+    try:
+        # Ping HF API to wake up the container if sleeping
+        requests.post(API_URL, headers=HEADERS, json={"inputs": "Boot sequence"}, timeout=5)
+        print("Cloud server online and ready!")
+    except Exception as e:
+        print("Connected to cloud structure, awaiting first prompt.")
 
 # =========================================
 # Schemas
@@ -107,22 +93,27 @@ class ChatResponse(BaseModel):
     reply: str
 
 # =========================================
-# Prediction Function
+# Cloud Prediction Function
 # =========================================
 def predict(text: str):
-    inputs = tokenizer(
-        text,
-        return_tensors="pt",
-        truncation=True,
-        padding=True
-    ).to(device)
-
-    with torch.no_grad():
-        outputs = model(**inputs)
-        probs = torch.softmax(outputs.logits, dim=1).cpu().numpy()[0]
-
-    idx = int(np.argmax(probs))
-    return id2label[idx], float(probs[idx])
+    try:
+        response = requests.post(API_URL, headers=HEADERS, json={"inputs": text})
+        data = response.json()
+        
+        if isinstance(data, list) and isinstance(data[0], list):
+            # API returned predictions
+            best_prediction = max(data[0], key=lambda x: x['score'])
+            # HF typically outputs "LABEL_0", "LABEL_1" etc.
+            label_id = int(best_prediction['label'].replace('LABEL_', ''))
+            return id2label.get(label_id, "Neutral"), float(best_prediction['score'])
+        elif isinstance(data, dict) and "error" in data:
+            print("HF Model Error:", data["error"])
+            return "Neutral", 50.0  # Safe default if model is waking up
+            
+        return "Neutral", 50.0
+    except Exception as e:
+        print(f"API Error: {e}")
+        return "Neutral", 50.0
 
 # =========================================
 # LLM Reply (Memory Enabled)
