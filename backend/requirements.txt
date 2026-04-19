@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+transformers
+huggingface_hub
+openai
+torch
+numpy
+python-dotenv

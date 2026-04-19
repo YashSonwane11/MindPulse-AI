@@ -1,0 +1,26 @@
+# Node dependencies
+node_modules/
+npm-debug.log
+
+# Python / Environment
+__pycache__/
+.venv/
+Scripts/
+Lib/
+Include/
+*.pyc
+
+# Environment Files (CRITICAL SECRETS)
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Build folders
+build/
+dist/
+
+# OS Files
+.DS_Store
+Thumbs.db
