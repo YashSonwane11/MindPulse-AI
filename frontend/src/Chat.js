@@ -141,7 +141,7 @@ function Chat() {
     try {
       // Include diagnostic context if we want to, though the backend doesn't expect it directly yet
       // We will just send the chat message to the existing endpoint.
-      const res = await axios.post("http://127.0.0.1:8000/chat", {
+      const res = await axios.post("https://mindpulse-ai-a8s8.onrender.com/chat", {
         message: userMessage,
       });
 

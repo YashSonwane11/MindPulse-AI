@@ -19,7 +19,7 @@ function Dashboard() {
 
   const fetchStats = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/stats");
+      const res = await axios.get("https://mindpulse-ai-a8s8.onrender.com/stats");
       setStats(res.data);
     } catch (err) {
       console.error("Failed to fetch stats", err);
