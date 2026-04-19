@@ -53,3 +53,21 @@ npm start
 
 ## 🔐 Security & Data
 MindPulse intentionally enforces a strict memory-limited array within the Chat structure. Conversations are wiped iteratively (storing only the last 10 messages) to ensure anonymity and mitigate long-term data vulnerabilities while still allowing the AI to understand immediate contextual cues.
+
+---
+
+## 🌐 Live Deployment
+
+The frontend of **MindPulse AI** is currently deployed and can be accessed at the link below:
+
+[![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://mind-pulse-ai-lyart.vercel.app)
+
+> **Note**: For the full AI-support experience, ensure the Python FastAPI backend is active and the HuggingFace Inference API is reachable.
+
+---
+
+## 👨‍💻 Developer
+**Yashkumar Sonwane** *Computer Engineering Student at G H Raisoni College of Engineering, Pune.*
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-1C3FAA?style=flat-square&logo=google-chrome&logoColor=white)]([your-portfolio-link-here](https://yashkumarportfolio-sand.vercel.app/))
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/YashSonwane11)
