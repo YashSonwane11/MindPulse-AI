@@ -8,6 +8,7 @@ import Chat from "./Chat";
 import Dashboard from "./Dashboard";
 import Navbar from "./Navbar";
 import Auth from "./Auth";
+import Landing from "./Landing";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -25,6 +26,11 @@ function App() {
     if (authChecking) return <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-main)', fontSize: '1.2rem', fontWeight: 'bold', zIndex: 9999 }}>Authenticating Secure Link...</div>;
     if (!user) return <Navigate to="/auth" replace />;
     return children;
+  };
+
+  const RootRoute = () => {
+    if (authChecking) return <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-main)', fontSize: '1.2rem', fontWeight: 'bold', zIndex: 9999 }}>Exploring MindPulse...</div>;
+    return user ? <Home /> : <Landing />;
   };
 
   // Global 3D Interactive Cursor Tracking
@@ -47,7 +53,7 @@ function App() {
         <Route path="/auth" element={<Auth />} />
         
         {/* Secure Payload Wrappers */}
-        <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+        <Route path="/" element={<RootRoute />} />
         <Route path="/chat" element={<ProtectedRoute><Chat /></ProtectedRoute>} />
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
       </Routes>

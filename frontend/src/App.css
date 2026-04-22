@@ -17,12 +17,12 @@
   background: 
     radial-gradient(
       800px circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh),
-      rgba(139, 92, 246, 0.35),
+      rgba(2, 132, 199, 0.15),
       transparent 50%
     ),
     radial-gradient(
       1000px circle at calc(100vw - var(--mouse-x, 50vw)) calc(100vh - var(--mouse-y, 50vh)),
-      rgba(16, 185, 129, 0.25),
+      rgba(56, 189, 248, 0.1),
       transparent 60%
     );
   transition: transform 0.1s ease-out;
@@ -79,6 +79,45 @@
   background-color: var(--vk-bg-main);
   border-color: var(--vk-primary);
   color: var(--vk-primary-hover);
+}
+
+.vk-btn-primary {
+  background: linear-gradient(135deg, var(--vk-primary) 0%, #3b82f6 100%);
+  color: #fff !important;
+  border: none;
+  justify-content: center;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.3);
+}
+.vk-btn-primary:hover {
+  background: linear-gradient(135deg, var(--vk-primary-hover) 0%, #2563eb 100%);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+}
+
+.vk-history-btn {
+  font-size: 0.9rem;
+  padding: 10px 12px;
+  border-color: transparent;
+  background-color: var(--vk-bg-main);
+}
+.vk-history-btn:hover {
+  background-color: var(--vk-surface);
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.vk-btn-danger {
+  width: 100%;
+  color: #ef4444 !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+  background-color: rgba(239, 68, 68, 0.05) !important;
+  justify-content: center;
+}
+.vk-btn-danger:hover {
+  background-color: #ef4444 !important;
+  color: #fff !important;
 }
 
 /* Main Content Area */
@@ -213,6 +252,7 @@
 
 .vk-input-field {
   flex: 1;
+  min-width: 0;
   padding: 14px 20px;
   border: 1px solid var(--vk-border);
   border-radius: 24px;
@@ -227,19 +267,21 @@
 }
 
 .vk-send-btn {
-  background-color: var(--vk-primary);
+  background: linear-gradient(135deg, var(--vk-primary) 0%, #3b82f6 100%);
   color: #fff;
   border: none;
   border-radius: 24px;
   padding: 0 24px;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.25);
+  transition: all 0.2s ease;
 }
 
 .vk-send-btn:hover {
-  background-color: var(--vk-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
 }
 
 .vk-trust-footer {
@@ -468,5 +510,30 @@
     order: 3;
     gap: 12px;
     margin-top: 1rem;
+  }
+  .dashboard {
+    padding: 24px 16px 40px;
+  }
+  .dashboard-header h2 {
+    font-size: 1.5rem;
+  }
+  .vk-chat-wrapper {
+    height: calc(100vh - 200px);
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard {
+    padding: 16px 10px 40px;
+  }
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-header h2 {
+    font-size: 1.3rem;
+  }
+  .kpi-card {
+    padding: 16px;
   }
 }

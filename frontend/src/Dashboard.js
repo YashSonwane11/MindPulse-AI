@@ -127,8 +127,8 @@ function Dashboard() {
       </header>
 
       {/* KPI Cards */}
-      <section className="card" style={{ marginBottom: '2.5rem' }}>
-        <div className="status-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+      <section className="card status-grid-container" style={{ marginBottom: '2.5rem' }}>
+        <div className="status-grid dashboard-status-grid">
           <div className="status-pill">
             <i className="ti ti-clipboard-list" style={{ color: "#3B82F6" }}></i>
             <div className="status-content">
@@ -158,7 +158,7 @@ function Dashboard() {
       {/* Charts Section */}
       <div className="dashboard-container" style={{ padding: '0', display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
         
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2.5rem' }}>
+        <div className="dashboard-charts-grid">
           <div className="card">
             <div className="card-header">
               <i className="ti ti-chart-pie"></i> Mental State Distribution

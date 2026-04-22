@@ -31,7 +31,7 @@ function Auth() {
       } else {
         await createUserWithEmailAndPassword(auth, email, password);
       }
-      navigate('/dashboard'); 
+      navigate('/'); 
     } catch (err) {
       console.error(err);
       if (err.code === "auth/email-already-in-use") {

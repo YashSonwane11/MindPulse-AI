@@ -163,8 +163,7 @@ function Chat() {
       {/* Sidebar: Quick Actions & History */}
       <div className="vk-sidebar">
         <button 
-          className="vk-action-btn"
-          style={{ background: 'var(--vk-primary)', color: 'white', justifyContent: 'center', fontWeight: 'bold', marginBottom: '16px', borderColor: 'transparent' }}
+          className="vk-action-btn vk-btn-primary"
           onClick={startNewChat}
         >
           <i className="ti ti-plus"></i> New Chat
@@ -187,8 +186,7 @@ function Chat() {
           {historyList.map((chat, idx) => (
             <button 
               key={idx} 
-              className="vk-action-btn" 
-              style={{ fontSize: '0.9rem', padding: '10px 12px', border: '1px solid transparent', backgroundColor: 'rgba(0,0,0,0.03)' }} 
+              className="vk-action-btn vk-history-btn" 
               onClick={() => loadHistoryItem(chat)}
             >
               <i className="ti ti-message"></i> {chat.date.split(',')[0]} Chat
@@ -198,8 +196,7 @@ function Chat() {
 
         <div style={{ marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid var(--vk-border)' }}>
           <button 
-            className="vk-action-btn" 
-            style={{ width: '100%', borderColor: 'rgba(239, 68, 68, 0.5)', color: '#ef4444' }} 
+            className="vk-action-btn vk-btn-danger" 
             onClick={clearHistory}
           >
             <i className="ti ti-trash"></i> Delete History

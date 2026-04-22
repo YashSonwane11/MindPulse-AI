@@ -1,44 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 :root {
-  /* VitaKita Soft Tech Variables */
+  /* Unified Ocean Tech Variables */
   --vk-bg-main: #f8fafc;
-  --vk-bg-gradient: linear-gradient(135deg, #e0f2fe 0%, #fdf4ff 100%);
-  --vk-primary: #0ea5e9;
-  --vk-primary-hover: #0284c7;
+  --vk-bg-gradient: linear-gradient(135deg, #f1f5f9 0%, #ffffff 100%);
+  --vk-primary: #0284c7;
+  --vk-primary-hover: #0369a1;
   --vk-surface: #ffffff;
-  --vk-text: #1e293b;
+  --vk-text: #0f172a;
   --vk-text-light: #64748b;
   --vk-border: #e2e8f0;
   --vk-crisis-alert: #ef4444;
 
-  /* MindPulse Dashboard Variables */
-  --mp-bg: #09090b;
-  --mp-bg-gradient: radial-gradient(circle at top right, rgba(139, 92, 246, 0.2), transparent 40%), radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.15), transparent 40%), #09090b;
-  --mp-surface: rgba(24, 24, 27, 0.65);
-  --mp-surface-border: rgba(139, 92, 246, 0.3);
-  --mp-text: #f4f4f5;
-  --mp-text-muted: #a1a1aa;
+  /* MindPulse Legacy Override */
+  --mp-bg: #f8fafc;
+  --mp-bg-gradient: radial-gradient(circle at top right, rgba(2, 132, 199, 0.08), transparent 40%), radial-gradient(circle at bottom left, rgba(14, 165, 233, 0.08), transparent 40%), #f8fafc;
+  --mp-surface: rgba(255, 255, 255, 0.85);
+  --mp-surface-border: #e2e8f0;
+  --mp-text: #0f172a;
+  --mp-text-muted: #64748b;
 }
 
 [data-theme="dark"] {
-  /* VitaKita App overrides to dark mode */
-  --vk-bg-main: #0f172a;
-  --vk-bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  /* Unified Ocean Tech Dark Mode */
+  --vk-bg-main: #0B1120;
+  --vk-bg-gradient: linear-gradient(135deg, #0B1120 0%, #0f172a 100%);
   --vk-surface: #1e293b;
   --vk-text: #f8fafc;
   --vk-text-light: #94a3b8;
   --vk-border: rgba(255,255,255,0.1);
-}
 
-[data-theme="light"] {
-  /* MindPulse Dashboard overrides to light mode */
-  --mp-bg: #f8fafc;
-  --mp-bg-gradient: radial-gradient(circle at top right, rgba(14, 165, 233, 0.1), transparent 40%), radial-gradient(circle at bottom left, rgba(168, 85, 247, 0.08), transparent 40%), #f8fafc;
-  --mp-surface: #ffffff;
-  --mp-surface-border: #e2e8f0;
-  --mp-text: #0f172a;
-  --mp-text-muted: #64748b;
+  --mp-bg: #0B1120;
+  --mp-bg-gradient: radial-gradient(circle at top right, rgba(56, 189, 248, 0.15), transparent 40%), radial-gradient(circle at bottom left, rgba(2, 132, 199, 0.1), transparent 40%), #0B1120;
+  --mp-surface: rgba(30, 41, 59, 0.65);
+  --mp-surface-border: rgba(56, 189, 248, 0.2);
+  --mp-text: #f8fafc;
+  --mp-text-muted: #94a3b8;
 }
 
 body {
